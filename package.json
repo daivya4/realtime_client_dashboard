@@ -2,6 +2,7 @@
   "name": "velozity-project-hub",
   "private": true,
   "workspaces": ["server", "web"],
+  "prisma": {"schema": "server/prisma/schema.prisma"},
   "scripts": {"dev": "concurrently \"npm:dev:server\" \"npm:dev:web\"", "dev:server": "npm --workspace server run dev", "dev:web": "npm --workspace web run dev", "build": "npm run build --workspaces", "db:push": "npm --workspace server run db:push", "db:seed": "npm --workspace server run db:seed"},
   "devDependencies": {"concurrently": "^9.1.2"}
 }
