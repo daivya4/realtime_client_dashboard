@@ -17,6 +17,12 @@ npm run dev
 
 Open http://localhost:5173. Seed users all use `password123`: `admin@velozity.dev`, `ravi@velozity.dev`, `maya@velozity.dev`, and `dev1@velozity.dev` through `dev4@velozity.dev`.
 
+## Deployment
+
+Deploy the `server` package to a long-running Node host such as Render, Railway, Fly.io, or a VPS. Socket.IO requires a persistent server connection and is not supported by Vercel serverless functions. Set its `DATABASE_URL`, `JWT_ACCESS_SECRET`, `JWT_REFRESH_SECRET`, and `CLIENT_URL` environment variables.
+
+Deploy the `web` folder as a separate Vercel project. Set the project root directory to `web`, build command to `npm run build`, and output directory to `dist`. Add `VITE_API_URL=https://your-api-host.example.com` and `VITE_SOCKET_URL=https://your-api-host.example.com` in the Vercel project environment variables. The URL ending in `server.vercel.app` is the API deployment, not the dashboard URL, so opening `/` there will return `Cannot GET /`.
+
 ## Architecture
 
 - **Web:** React + TypeScript + Vite. The dashboard keeps a short-lived access token in memory; the refresh token is an HttpOnly, SameSite cookie and is never exposed to JavaScript.
