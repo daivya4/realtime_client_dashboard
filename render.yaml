@@ -16,3 +16,15 @@ services:
         sync: false
       - key: NODE_ENV
         value: production
+
+  - type: web
+    name: velozity-web
+    runtime: static
+    rootDir: web
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+      - key: VITE_SOCKET_URL
+        sync: false
